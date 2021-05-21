@@ -14,7 +14,7 @@ class Server:
         self.clientMessages = []
         self.players = []
         self.host = socket.gethostbyname(socket.gethostname())
-        self.port = 9096
+        self.port = 3660
         self.damage = 100
 
     def recv(self, player):
@@ -26,7 +26,7 @@ class Server:
 
     def run(self):
         self.serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.serversocket.bind((self.host, self.port))
+        self.serversocket.bind(('127.0.0.1', 3660))
         self.serversocket.listen(1)
         while True:
             try:
@@ -34,7 +34,7 @@ class Server:
             except Exception:
                 print("No connect")
                 return
-            print(addr, " Подключился")
+            print(addr, "Подключился")
             if len(self.players) == 2:
                 mess = ServerMessage(message="Два игрока уже в игре")
                 player.sendall(mess)

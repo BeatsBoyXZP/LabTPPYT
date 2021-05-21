@@ -1,12 +1,3 @@
-# -*- coding: utf-8 -*-
-
-# Form implementation generated from reading ui file 'gui.ui'
-#
-# Created by: PyQt5 UI code generator 5.13.0
-#
-# WARNING! All changes made in this file will be lost!
-
-
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
@@ -71,5 +62,5 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.labelUser.setText(_translate("MainWindow", "Username"))
-        self.label.setText(_translate("MainWindow", "Дейтсвие"))
+        self.label.setText(_translate("MainWindow", "Действие"))
         self.pushButton.setText(_translate("MainWindow", "OK"))

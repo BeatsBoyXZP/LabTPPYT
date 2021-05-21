@@ -24,13 +24,13 @@ class MainPlayerWindow(QtWidgets.QMainWindow):
         try:
             self.ui.pushButton.clicked.connect(self.moveGame)
         except Exception:
-            print("Что-то полшло не так")
+            print("Что-то пошло не так")
 
     def getEnergy(self):
         return "Ваша энергия " + str(self.energy) + "\n"
 
     def getHP(self):
-        return "Ваша доровье " + str(self.message.hp) + "\n"
+        return "Ваше здоровье " + str(self.message.hp) + "\n"
 
     def getIndex(self):
         if self.ui.comboBox.currentIndex() == 0:
@@ -72,7 +72,7 @@ class MainPlayerWindow(QtWidgets.QMainWindow):
             print("No connect")
         self.ui.comboBox.addItem("Удар en: 50")
         self.ui.comboBox.addItem("Защита en: 25")
-        self.ui.comboBox.addItem("Востановить энергию en: 100")
+        self.ui.comboBox.addItem("Восстановить энергию en: 100")
         self.receive_worker = threading.Thread(target=self.receive)
         self.receive_worker.start()
 
@@ -84,7 +84,7 @@ class MainPlayerWindow(QtWidgets.QMainWindow):
                 self.message.hp = self.inputMessage.hp
                 if self.inputMessage.start == None:
                     self.ui.labelResult.clear()
-                    self.ui.labelResult.setText("Игра не началсь дождитесь подключения!!!")
+                    self.ui.labelResult.setText("Игра не началась дождитесь подключения!!!")
                 else:
                     self.ui.labelResult.clear()
                     self.ui.labelResult.setText(self.inputMessage.message + self.getHP() + self.getEnergy())
