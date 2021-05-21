@@ -26,7 +26,7 @@ class Server:
 
     def run(self):
         self.serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.serversocket.bind(('127.0.0.1', 3660))
+        self.serversocket.bind((self.host, self.port))
         self.serversocket.listen(1)
         while True:
             try:
