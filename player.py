@@ -8,7 +8,8 @@ import threading
 import json
 import gameplay
 
-BUFFER_SIZE = 2**10
+BUFFER_SIZE = 2 ** 10
+
 
 class MainPlayerWindow(QtWidgets.QMainWindow):
 
@@ -16,7 +17,7 @@ class MainPlayerWindow(QtWidgets.QMainWindow):
         super(MainPlayerWindow, self).__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        self.port = 9096
+        self.port = 3660
         self.host = socket.gethostbyname(socket.gethostname())
         self.message = None
         self.inputMessage = None
@@ -61,12 +62,11 @@ class MainPlayerWindow(QtWidgets.QMainWindow):
         self.energy += self.getIndex()
         self.sendMessage()
 
-
     def connectServer(self):
         try:
             self.message = ClientMessage(username=self.ui.lineEdit.text())
             self.clientsocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            self.clientsocket.connect((self.host, self.port))
+            self.clientsocket.connect_ex((self.host, self.port))
             self.clientsocket.sendall(self.message.marshal())
         except Exception:
             print("No connect")
@@ -128,6 +128,7 @@ class MainPlayerWindow(QtWidgets.QMainWindow):
                 self.exit()
         else:
             event.ignore()
+
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication([])
